@@ -1,0 +1,7 @@
+App\Entity\Actor:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    post: ~
+    get:
+      path: '/aktorzy'
