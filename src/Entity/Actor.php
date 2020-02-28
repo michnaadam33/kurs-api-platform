@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -21,12 +22,14 @@ class Actor
     private $id;
 
     /**
+     * @Groups({"read", "create"})
      * @ORM\Column(type="string")
      * @var string
      */
     private $firstName;
 
     /**
+     * @Groups({"read", "create"})
      * @ORM\Column(type="string")
      * @var string
      */
