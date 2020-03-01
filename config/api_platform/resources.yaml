@@ -9,3 +9,9 @@ App\Entity\Actor:
   collectionOperations:
     post: ~
     get: ~
+
+App\Entity\Movie:
+  attributes:
+    pagination_client_enabled: false
+  itemOperation: ~
+  collectionOperations: ~
