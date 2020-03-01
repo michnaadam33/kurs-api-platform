@@ -8,5 +8,4 @@ App\Entity\Actor:
     get: ~
   collectionOperations:
     post: ~
-    get:
-      path: '/aktorzy'
+    get: ~

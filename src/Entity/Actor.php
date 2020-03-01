@@ -3,9 +3,11 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Webmozart\Assert\Assert;
 
 /**
  * @ORM\Entity()
@@ -40,6 +42,17 @@ class Actor
      * @var Movie[]|Collection
      */
     private $movies;
+
+    /**
+     * @ORM\Column()
+     * @var string
+     */
+    private $sex;
+
+    public function __construct()
+    {
+        $this->movies = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -96,6 +109,25 @@ class Actor
     }
 
     /**
+     * @return string
+     */
+    public function getSex(): string
+    {
+        return $this->sex;
+    }
+
+    /**
+     * @param string $sex
+     * @return Actor
+     */
+    public function setSex(string $sex): Actor
+    {
+        Assert::oneOf($sex, ['female', 'male']);
+        $this->sex = $sex;
+        return $this;
+    }
+
+    /**
      * @return Movie[]|Collection
      */
     public function getMovies()
@@ -103,13 +135,9 @@ class Actor
         return $this->movies;
     }
 
-    /**
-     * @param Movie[]|Collection $movies
-     * @return Actor
-     */
-    public function setMovies($movies)
+    public function addMovie(Movie $movie): self
     {
-        $this->movies = $movies;
+        $this->movies->add($movie);
         return $this;
     }
 }
