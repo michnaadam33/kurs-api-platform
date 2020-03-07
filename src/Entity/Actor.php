@@ -3,17 +3,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Webmozart\Assert\Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity()
+ * @ApiFilter(OrderFilter::class, properties={"firstName": "ASC", "lastName": "ASC"})
+ * @ApiFilter(SearchFilter::class, properties={"firstName": "ipartial", "lastName": "iend"})
  */
 class Actor
 {
+
 
     /**
      * @ORM\Column(type="integer")

@@ -3,11 +3,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ORM\Entity()
+ * @ApiFilter(DateFilter::class, properties={"createAt"})
  */
 class Movie
 {
