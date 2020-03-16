@@ -50,10 +50,18 @@ class Actor
     private $movies;
 
     /**
+     * @Groups({"read", "create"})
      * @ORM\Column()
      * @var string
      */
     private $sex;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default" = false})
+     * @Groups({"read_oscar"})
+     * @var bool
+     */
+    private $hasOscar = false;
 
     public function __construct()
     {
@@ -144,6 +152,24 @@ class Actor
     public function addMovie(Movie $movie): self
     {
         $this->movies->add($movie);
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasOscar(): bool
+    {
+        return $this->hasOscar;
+    }
+
+    /**
+     * @param bool $hasOscar
+     * @return Actor
+     */
+    public function setHasOscar(bool $hasOscar): Actor
+    {
+        $this->hasOscar = $hasOscar;
         return $this;
     }
 }

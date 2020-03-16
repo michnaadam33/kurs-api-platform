@@ -9,6 +9,12 @@ App\Entity\Actor:
   collectionOperations:
     post: ~
     get: ~
+    post_oscar_actor:
+      normalization_context:
+        groups: ['read', 'read_oscar']
+      method: POST
+      controller: App\Action\OscarActorAction
+      path: /oscar_actors
 
 App\Entity\Movie:
   attributes:
