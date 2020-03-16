@@ -27,21 +27,21 @@ class MovieFixture extends Fixture implements DependentFixtureInterface
         $typeRomantic = $this->getReference(TypeFixture::ID_ROMANTIC);
         $movie1 = new Movie();
         $movie1->setTitle("Sara");
-        $movie1->setCreateAt(new DateTime("11-07-1997"));
+        $movie1->setCreatedAt(new DateTime("11-07-1997"));
         $movie1->setType($typeRomantic);
         $this->addReference(self::ID_SARA, $movie1);
         $manager->persist($movie1);
 
         $movie2 = new Movie();
         $movie2->setTitle("Chłopaki nie płaczą");
-        $movie2->setCreateAt(new DateTime("25-02-2000"));
+        $movie2->setCreatedAt(new DateTime("25-02-2000"));
         $movie2->setType($typeComedy);
         $this->addReference(self::ID_CHLOPAKI_NIE_PLACZA, $movie2);
         $manager->persist($movie2);
 
         $movie3 = new Movie();
         $movie3->setTitle("Psy");
-        $movie3->setCreateAt(new DateTime("31-12-1992"));
+        $movie3->setCreatedAt(new DateTime("31-12-1992"));
         $movie3->setType($typeAction);
         $this->addReference(self::ID_PSY, $movie3);
         $manager->persist($movie3);

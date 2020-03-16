@@ -19,8 +19,12 @@ App\Entity\Actor:
 App\Entity\Movie:
   attributes:
     pagination_client_enabled: false
+    input: App\Dto\MovieInput
   itemOperation: ~
   collectionOperations:
+    post:
+      normalization_context:
+        groups: ['list']
     get:
       normalization_context:
         groups: ['list']

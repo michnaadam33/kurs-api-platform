@@ -36,7 +36,7 @@ class Movie
      * @Groups({"list", "read"})
      * @var DateTime
      */
-    private $createAt;
+    private $createdAt;
 
 
     /**
@@ -86,18 +86,18 @@ class Movie
     /**
      * @return DateTime
      */
-    public function getCreateAt(): DateTime
+    public function getCreatedAt(): DateTime
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
     /**
-     * @param DateTime $createAt
+     * @param DateTime $createdAt
      * @return Movie
      */
-    public function setCreateAt(DateTime $createAt): Movie
+    public function setCreatedAt(DateTime $createdAt): Movie
     {
-        $this->createAt = $createAt;
+        $this->createdAt = $createdAt;
         return $this;
     }
 
