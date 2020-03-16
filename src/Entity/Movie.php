@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -25,16 +26,26 @@ class Movie
 
     /**
      * @ORM\Column()
+     * @Groups({"list", "read"})
      * @var string
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"list", "read"})
      * @var DateTime
      */
     private $createAt;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type")
+     * @Groups({"list", "read"})
+     * @ORM\JoinColumn(nullable=false)
+     * @var Type
+     */
+    private $type;
 
     /**
      * @return int
@@ -87,6 +98,24 @@ class Movie
     public function setCreateAt(DateTime $createAt): Movie
     {
         $this->createAt = $createAt;
+        return $this;
+    }
+
+    /**
+     * @return Type
+     */
+    public function getType(): Type
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param Type $type
+     * @return Movie
+     */
+    public function setType(Type $type): Movie
+    {
+        $this->type = $type;
         return $this;
     }
 }
