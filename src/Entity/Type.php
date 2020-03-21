@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -29,6 +30,11 @@ class Type
      */
     private $name;
 
+    /**
+     * @var DateTime
+     */
+    private $checkDate;
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -48,5 +54,23 @@ class Type
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCheckDate(): DateTime
+    {
+        return $this->checkDate;
+    }
+
+    /**
+     * @param DateTime $checkDate
+     * @return Type
+     */
+    public function setCheckDate(DateTime $checkDate): Type
+    {
+        $this->checkDate = $checkDate;
+        return $this;
     }
 }
