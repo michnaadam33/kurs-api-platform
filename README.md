@@ -14,3 +14,11 @@ composer req api
 # Uruchamianie serwera
 symfony serve
 ```
+
+
+```bash
+# Instalacja paczek do testów
+composer req test --dev
+composer require --dev symfony/browser-kit symfony/http-client
+composer require --dev justinrainbow/json-schema
+```
